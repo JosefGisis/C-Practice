@@ -1,44 +1,30 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+
+#include "parse-args.h"
 #define TRUE 1
 #define FALSE 0
-#define SOURCE "source"
-#define USAGE "Usage: parse-file [-options] <file>\n" \
 
-char * get_source(int argc, char *argv[]) {
-    int i, found = FALSE;
+int main(const int argc, char **argv) {
+    char *key = malloc(1);
+    char *value = malloc(1);
 
-    if (argc < 2) {
-        printf("Insufficient arguments provided. %s\n", USAGE);
-        return 0;
-    }
+    for (int i=1; i < argc; i++) {
+        const int result = get_opt_args(argc, argv, key, value);
 
-    for (i = 1; i < argc && !found; i++) {
-        if (strcmp(argv[i], SOURCE) == 0) {
-            found = TRUE;
+        if (result == 1) {
+            printf("key=%s value=%s\n", key, value);
+        } else if (result == 0) {
+            printf("Reached end of arguments\n");
+        } else if (result == -1) {
+            printf("Failed to parse output\n");
         }
     }
 
-    if (!found) {
-        printf("No source specified. %s\n", USAGE);
-        return 0;
-    }
 
-    char * source_value = argv[i];
+    free(key);
+    free(value);
 
-    return source_value;
-}
-
-int main(const int argc, char **argv) {
-    char *source = get_source(argc, argv);
-
-    if (source == NULL) {
-        return 1;
-    }
-
-    printf("source arg is %s\n", source);
-
-    for (int i = 1; i < argc; i++) {
-        printf("argv[%d] = %s\n", i, argv[i]);
-    }
+    return 0;
 }
