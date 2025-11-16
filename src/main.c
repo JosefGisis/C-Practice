@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-
 #include "parse-args.h"
 #define TRUE 1
 #define FALSE 0
@@ -21,7 +19,6 @@ int main(const int argc, char **argv) {
             printf("Failed to parse output\n");
         }
     }
-
 
     free(key);
     free(value);

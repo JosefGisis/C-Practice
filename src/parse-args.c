@@ -1,10 +1,8 @@
 #include "parse-args.h"
 #include <ctype.h>
 #include <_string.h>
-#include <stdio.h>
-
 #define EOA 0
-#define ERROR -1
+#define ERROR (-1)
 #define SUCCESS 1
 #define MAX_VALUE_LENGTH 1000
 
