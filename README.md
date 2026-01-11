@@ -1,8 +1,20 @@
 ### This project is a simple argument parser for C programs.
 
+To compile:
+Go to root of project and run
+```bash
+cmake ./Cmake-build-debug   
+```
+to run:
+```bash
+cd ./Cmake-build-debug
+./arg-parser --optarg=blank
+```
+
 #### Usage guidelines for optional arguments and flags
 - Optional arguments can be preceded by either a single or double dash.
 - Optional argument values are provided right after the key and seperated by an equal sign (e.q. --key=value).
+- Values for optional arguments are always optional.
 - Single dashes are flags and can include multiple flags for a single argument (e.g. -gbr).
 - A value cannot be provided where multiple flags are provided in a single argument (the value will be ignored).
 - Optional arguments can include dashes (e.g. --hello-world, ---helloworld), but flags cannot.

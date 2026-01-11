@@ -2,7 +2,6 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <_string.h>
-#include <stdio.h>
 #define EOA 0
 #define ERROR (-1)
 #define SUCCESS 1
@@ -11,7 +10,7 @@
 int get_opt_arg_index = 1;
 int get_opt_arg_bookmark = 0;
 
-int get_opt_args(const int argc, char *argv[], char *key, char *value) {
+int get_opt_arg(const int argc, char *argv[], char *key, char *value) {
     if (get_opt_arg_bookmark > 0) {
         const char current_char = argv[get_opt_arg_index][get_opt_arg_bookmark++];
         if (current_char == '\0' || current_char == '\n' || current_char == '=') {
@@ -70,6 +69,6 @@ int get_opt_args(const int argc, char *argv[], char *key, char *value) {
     return SUCCESS;
 }
 
-int get_pos_args(int argc, char *argv[], char *pattern, char **results) {
+int get_pos_arg(int argc, char *argv[], char *pattern, char **results) {
     return SUCCESS;
 }

@@ -1,10 +1,16 @@
-cmake_minimum_required(VERSION 3.20)
-project(practice)
+cmake_minimum_required(VERSION 3.10)
+project(arg-parser C)
 
-include_directories(include src)
+set(CMAKE_C_STANDARD 11)
 
-# Recursively get ALL .c files from src/ and subdirectories
-file(GLOB_RECURSE SOURCES "src/*.c")
+# Include directories
+include_directories(include)
 
-# Create ONE executable with all the source files
-add_executable(practice ${SOURCES})
+# Source files
+set(SOURCES
+        src/main.c
+        src/parse-args.c
+)
+
+# Create executable
+add_executable(arg-parser ${SOURCES})
