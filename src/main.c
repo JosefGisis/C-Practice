@@ -15,10 +15,10 @@ int main(const int argc, char **argv) {
         if (result == EOA) {
             end_of_args = TRUE;
             printf("Reached end of optional arguments\n");
-        } else if (result == 1) {
+        } else if (result == SUCCESS) {
             printf("key=%s value=%s\n", key, value);
-        } else if (result == -1) {
-            printf("Failed to parse output\n");
+        } else if (result == ERROR) {
+            exit(EXIT_FAILURE);
         }
     }
 
