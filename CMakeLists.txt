@@ -9,7 +9,7 @@ include_directories(include)
 # Source files
 set(SOURCES
         src/main.c
-        src/parse-args.c
+        src/parse-opt-args.c
 )
 
 # Create executable

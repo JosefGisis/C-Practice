@@ -9,10 +9,10 @@ int main(const int argc, char **argv) {
     char *key = malloc(1);
     char *value = malloc(1);
 
-    for (int i = 1, end_of_args = FALSE; i <= MAX_ARGS_LENGTH && end_of_args == FALSE; i++) {
+    for (int i = 1, end_of_args = FALSE; i <= MAX_ARGS_LENGTH && !end_of_args; i++) {
         const int result = get_opt_arg(argc, argv, key, value);
 
-        if (result == 0) {
+        if (result == EOA) {
             end_of_args = TRUE;
             printf("Reached end of optional arguments\n");
         } else if (result == 1) {
@@ -44,3 +44,4 @@ int main(const int argc, char **argv) {
 
     return 0;
 };
+
