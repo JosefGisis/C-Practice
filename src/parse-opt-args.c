@@ -52,14 +52,14 @@ int get_opt_arg(const int argc, char *argv[], char *key, char *value) {
     for (; argv[get_opt_arg_index][get_opt_arg_bookmark] == '-' && get_opt_arg_bookmark < 3; get_opt_arg_bookmark++) {
     }
     if (get_opt_arg_bookmark > 2) {
-        fprintf(stderr, "Optional arguments must either start with a double or single dash");
+        fprintf(stderr, "Optional arguments must either start with a double or single dash\n");
         fflush(stderr);
         return ERROR;
     }
 
     // Users should not provide empty optional args
     if (argv[get_opt_arg_index][get_opt_arg_bookmark] == '\0') {
-        fprintf(stderr, "Error: Empty optional argument provided");
+        fprintf(stderr, "Error: Empty optional argument provided\n");
         fflush(stderr);
         return ERROR;
     }

@@ -11,12 +11,19 @@ cd ./Cmake-build-debug
 ./arg-parser --optarg=blank
 ```
 
+#### TODO
+- [] Update README for latest version of get_opt_arg
+- [] Update malloc size allocation
+- [] Update header file to include all functions and move all symbolic constants into headers file
+- [] Create get_pos_arg
+- [] Create get_all_pos_args
+
 #### Usage guidelines for optional arguments and flags
 - Optional arguments can be preceded by either a single or double dash.
 - Optional argument values are provided right after the key and seperated by an equal sign (e.q. --key=value).
 - Values for optional arguments are always optional.
 - Single dashes are flags and can include multiple flags for a single argument (e.g. -gbr).
-- A value cannot be provided where multiple flags are provided in a single argument (the value will be ignored).
+- A value cannot be provided where multiple flags are provided in a single argument.
 - Optional arguments can include dashes (e.g. --hello-world, ---helloworld), but flags cannot.
 - The equal sign indicates the start of an arguments value. Subsequent equal signs within the value will be returned as is.
 - Values with whitespaces need to be enclosed with quotation marks, or it will be parsed as a positional argument.
