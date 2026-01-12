@@ -1,13 +1,10 @@
 #include "parse-args.h"
 #include <stdio.h>
 #include <stdlib.h>
-#define TRUE 1
-#define FALSE 0
-#define MAX_ARGS_LENGTH 100
 
 int main(const int argc, char **argv) {
-    char *key = malloc(1);
-    char *value = malloc(1);
+    char *key = malloc(sizeof(char) * MAX_ARG_VAL_LENGTH);
+    char *value = malloc(sizeof(char) * MAX_ARG_VAL_LENGTH);
 
     for (int i = 1, end_of_args = FALSE; i <= MAX_ARGS_LENGTH && !end_of_args; i++) {
         const int result = get_opt_arg(argc, argv, key, value);
@@ -41,6 +38,7 @@ int main(const int argc, char **argv) {
 
     free(key);
     free(value);
+    reset_opt_arg_parser();
 
     return 0;
 };
