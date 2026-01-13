@@ -23,13 +23,11 @@ int get_opt_arg(const int argc, char *argv[], char *key, char *value) {
         get_opt_arg_bookmark++;
         if (get_opt_arg_bookmark > MAX_ARG_KEY_LENGTH) {
             fprintf(stderr, "Compound flag has exceeded max length of %i\n", MAX_ARG_KEY_LENGTH);
-            fflush(stderr);
             return ERROR;
         }
          if (argv[get_opt_arg_index][get_opt_arg_bookmark] == '=' || argv[get_opt_arg_index][get_opt_arg_bookmark] == '-') {
             fprintf(stderr, "Invalid character provided in compound flag\n");
-             fflush(stderr);
-            return ERROR;
+             return ERROR;
         }
 
         if (argv[get_opt_arg_index][get_opt_arg_bookmark] == '\0') {
@@ -53,14 +51,12 @@ int get_opt_arg(const int argc, char *argv[], char *key, char *value) {
     }
     if (get_opt_arg_bookmark > 2) {
         fprintf(stderr, "Optional arguments must either start with a double or single dash\n");
-        fflush(stderr);
         return ERROR;
     }
 
     // Users should not provide empty optional args
     if (argv[get_opt_arg_index][get_opt_arg_bookmark] == '\0') {
         fprintf(stderr, "Error: Empty optional argument provided\n");
-        fflush(stderr);
         return ERROR;
     }
 
@@ -73,7 +69,6 @@ int get_opt_arg(const int argc, char *argv[], char *key, char *value) {
 
     if (isFlag && key_len > 1 && value_segment != NULL) {
         fprintf(stderr, "error: invalid option '%s'. Cannot provide a value for grouped flags\n", arg_start);
-        fflush(stderr);
         return ERROR;
     }
 
