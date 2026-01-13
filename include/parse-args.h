@@ -15,6 +15,7 @@
 int get_opt_arg(int argc, char *argv[], char * key, char * value);
 void reset_opt_arg_parser(void);
 
-int get_pos_arg(int argc, char *argv[], char * pattern, char ** results);
+int get_pos_arg(int argc, char *argv[],  char * value);
+void reset_pos_arg_parser(void);
 
 #endif

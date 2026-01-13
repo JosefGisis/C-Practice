@@ -10,6 +10,7 @@ include_directories(include)
 set(SOURCES
         src/main.c
         src/parse-opt-args.c
+        src/parse-pos-args.c
 )
 
 # Create executable
