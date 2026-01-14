@@ -39,7 +39,7 @@ int main(const int argc, char **argv) {
         }
     }
 
-    const char *pattern = "--*-----";
+    const char *pattern = "----*";
 
     // Allocate MAX_ARGS_LENGTH strings of MAX_ARG_VAL_LENGTH. Initialized to \0
     char all_args[MAX_ARGS_LENGTH][MAX_ARG_VAL_LENGTH] = {0};

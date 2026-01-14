@@ -82,7 +82,7 @@ int get_all_pos_args(const int argc, char *argv[], const char *pattern,
         return ERROR;
     }
 
-    if (total >= argc) {
+    if (total > argc - 1) {
         fprintf(stderr, "Insufficient positional arguments provided %i for pattern %s\n", argc - 1, pattern);
         return ERROR;
     }
@@ -161,17 +161,18 @@ int get_all_pos_args(const int argc, char *argv[], const char *pattern,
             if (argv[i][0] != '-') {
                 strcpy(value[catch_all_count + pre_catch_all_count], argv[i]);
                 catch_all_count++;
+                if ((catch_all_count + post_catch_all_count + pre_catch_all_count) > MAX_ARGS_LENGTH) {
+                    fprintf(stderr, "Argument count exceeded max arg length");
+                    return ERROR;
+                }
             }
         }
     }
 
     // We need to add the post catch all args back onto the end of the array
     if (post_catch_all_count > 0) {
-        for (int i = pre_catch_all_count + catch_all_count, j = 0; j < post_catch_all_count; i++) {
-            if (post_catch_all_temp[j][0] != '\0') {
-                strcpy(value[i], post_catch_all_temp[j]);
-                j++;
-            }
+        for (int i = pre_catch_all_count + catch_all_count, j = post_catch_all_count - 1; j >= 0; i++, j--) {
+            strcpy(value[i], post_catch_all_temp[j]);
         }
     }
 
