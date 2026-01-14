@@ -18,6 +18,6 @@ void reset_opt_arg_parser(void);
 int get_pos_arg(int argc, char *argv[],  char * value);
 void reset_pos_arg_parser(void);
 
-int get_all_pos_args(int argc, char *argv[], const char * pattern, char * value[]);
+int get_all_pos_args(int argc, char *argv[], const char * pattern, char value[MAX_ARGS_LENGTH][MAX_ARG_VAL_LENGTH]);
 
 #endif

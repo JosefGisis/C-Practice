@@ -39,15 +39,20 @@ int main(const int argc, char **argv) {
         }
     }
 
-    char * patter_1 = "---*--";
-    char * patter_2 = "---*";
-    char * patter_3 = "--*-";
-    char * patter_4 = "-h-";
+    const char *pattern = "--*-----";
 
-    get_all_pos_args(argc, argv, patter_1, argv);
-    get_all_pos_args(argc, argv, patter_2, argv);
-    get_all_pos_args(argc, argv, patter_3, argv);
-    get_all_pos_args(argc, argv, patter_4, argv);
+    // Allocate MAX_ARGS_LENGTH strings of MAX_ARG_VAL_LENGTH. Initialized to \0
+    char all_args[MAX_ARGS_LENGTH][MAX_ARG_VAL_LENGTH] = {0};
+
+    get_all_pos_args(argc, argv, pattern, all_args);
+
+    for (int i = 0, end_of_args = FALSE; end_of_args == FALSE && i < MAX_ARGS_LENGTH; i++) {
+        if (all_args[i][0] != '\0') {
+            printf("Argument number %i is: %s\n", i + 1, all_args[i]);
+        } else {
+            end_of_args = TRUE;
+        }
+    }
 
     free(key);
     free(value);
@@ -56,4 +61,3 @@ int main(const int argc, char **argv) {
 
     return SUCCESS;
 };
-
